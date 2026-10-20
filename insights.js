@@ -6,14 +6,14 @@
 
 const INSIGHTS = {
   "meta": {
-    "basedOnTravelJsonUpdatedAt": "2026-10-03",
+    "basedOnTravelJsonUpdatedAt": "2026-10-10",
     "confirmedAt": {
       "weekly": "2026-10-09",
-      "monthly": "2026-10-09",
+      "monthly": "2026-10-20",
       "quarterly": "2026-08-31"
     },
     "stale": {
-      "weekly": false,
+      "weekly": true,
       "monthly": false,
       "quarterly": false
     }
@@ -59,24 +59,13 @@ const INSIGHTS = {
       },
       {
         "tag": "highlight",
-        "title": "8月国内航空客流维持正增长",
-        "body": "8月国内客运量同比民航局口径 <span class=\"num-highlight\">+4.8%</span>、三大航 <span class=\"num-highlight\">+5.1%</span>，均延续7月的正增长。民航局口径较7月加快约0.7个百分点，三大航略降约0.2个百分点；后续看假期后客流能否保持。",
+        "title": "9月国内航空客流增速放缓但维持正增长",
+        "body": "9月国内客运量同比民航局口径 <span class=\"num-highlight\">+2.3%</span>、三大航 <span class=\"num-highlight\">+3.7%</span>，较8月 +4.8% / +5.1% 均放缓约2个百分点，但连续第三个月正增长。中秋国庆假期错位影响下增速回落，后续看10月国庆出行数据。",
         "refs": [
+          "monthly.domAviationCAAC@9月",
+          "monthly.domAviationBig3@9月",
           "monthly.domAviationCAAC@8月",
-          "monthly.domAviationBig3@8月",
-          "monthly.domAviationCAAC@7月",
-          "monthly.domAviationBig3@7月"
-        ]
-      },
-      {
-        "tag": "risk",
-        "title": "国际航班运力仍低于2019年",
-        "body": "8月国际航班运力较2019年 <span class=\"num-highlight\">-11.5%</span>，较7月 -11.9% 的缺口小幅收窄；国际及港澳台客运量同比民航局 +2.1%、三大航 +5.4%。后续关注换季后的增班是否继续缩小运力缺口。",
-        "refs": [
-          "monthly.intlCapacity@8月",
-          "monthly.intlCapacity@7月",
-          "monthly.intlAviationCAAC@8月",
-          "monthly.intlAviationBig3@8月"
+          "monthly.domAviationBig3@8月"
         ]
       }
     ],
@@ -84,7 +73,7 @@ const INSIGHTS = {
       {
         "tag": "highlight",
         "title": "Hotel RevPAR edged back into growth in August",
-        "body": "Hotel RevPAR rose <span class=\"num-highlight\">0.3% YoY</span> in August, compared with a 4.0% decline in July. ADR increased 0.6%, while occupancy remained down 0.4%; the return to growth was slight, and the next test is whether room rates stay positive.",
+        "body": "Hotel RevPAR rose <span class=\"num-highlight\">0.3% YoY</span> in August, compared with a 4.0% decline in July. ADR increased 0.6%, while occupancy remained down 0.4%. The recovery is modest; watch whether room rates can stay in positive territory.",
         "refs": [
           "monthly.hotelRevPAR@8月",
           "monthly.hotelRevPAR@7月",
@@ -94,24 +83,13 @@ const INSIGHTS = {
       },
       {
         "tag": "highlight",
-        "title": "Domestic air traffic maintained growth in August",
-        "body": "Domestic passenger traffic rose <span class=\"num-highlight\">4.8% YoY</span> on the CAAC measure and <span class=\"num-highlight\">5.1%</span> for the three major airlines in August, extending July’s growth. The CAAC measure accelerated by about 0.7 percentage points, while the three-airline measure eased by about 0.2 points; watch whether traffic holds up after the holiday period.",
+        "title": "Domestic air traffic growth moderated but stayed positive in September",
+        "body": "Domestic passenger traffic rose <span class=\"num-highlight\">2.3% YoY</span> on the CAAC measure and <span class=\"num-highlight\">3.7%</span> for the three major carriers in September, both roughly 2 points slower than August's 4.8% / 5.1%, but still a third consecutive month of growth. The slowdown partly reflects the shifted Mid-Autumn/National Day holiday calendar; watch October holiday travel data next.",
         "refs": [
+          "monthly.domAviationCAAC@9月",
+          "monthly.domAviationBig3@9月",
           "monthly.domAviationCAAC@8月",
-          "monthly.domAviationBig3@8月",
-          "monthly.domAviationCAAC@7月",
-          "monthly.domAviationBig3@7月"
-        ]
-      },
-      {
-        "tag": "risk",
-        "title": "International flight capacity remained below 2019",
-        "body": "International flight capacity in August was <span class=\"num-highlight\">11.5% below 2019</span>, a slightly narrower gap than July’s 11.9%. International and regional passenger traffic rose 2.1% YoY on the CAAC measure and 5.4% for the three major airlines; watch whether the next schedule change narrows the capacity gap further.",
-        "refs": [
-          "monthly.intlCapacity@8月",
-          "monthly.intlCapacity@7月",
-          "monthly.intlAviationCAAC@8月",
-          "monthly.intlAviationBig3@8月"
+          "monthly.domAviationBig3@8月"
         ]
       }
     ]
