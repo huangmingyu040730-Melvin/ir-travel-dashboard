@@ -2017,10 +2017,19 @@
                     },
                 };
                 if (isLine) {
+                    const vals = Array.isArray(s.data) ? s.data : [];
+                    const lastIdx = vals.reduce((last, v, i) => (v != null && !Number.isNaN(v)) ? i : last, -1);
+                    const isolatedLast = lastIdx > 0 && (vals[lastIdx - 1] == null || Number.isNaN(vals[lastIdx - 1]));
                     out.showSymbol = true;
                     out.symbol = 'circle';
                     out.symbolSize = 5;
                     out.itemStyle = { ...(s.itemStyle || {}), color, opacity: 0, borderWidth: 0 };
+                    if (isolatedLast) {
+                        out.data = vals.map((v, i) => i === lastIdx
+                            ? { value: v, symbol: 'circle', symbolSize: 9, itemStyle: { color, opacity: 1, borderColor: '#fff', borderWidth: 1.5 } }
+                            : v);
+                        if (out.label) out.label = { ...out.label, show: false };
+                    }
                     out.emphasis.lineStyle = { width: (s.lineStyle && s.lineStyle.width ? s.lineStyle.width : 1.5) + 0.5 };
                     out.emphasis.itemStyle = { opacity: 1, color, borderWidth: 0 };
                     out.emphasis.scale = false;
