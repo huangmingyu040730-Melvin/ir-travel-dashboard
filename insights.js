@@ -6,14 +6,14 @@
 
 const INSIGHTS = {
   "meta": {
-    "basedOnTravelJsonUpdatedAt": "2026-10-10",
+    "basedOnTravelJsonUpdatedAt": "2026-10-17",
     "confirmedAt": {
-      "weekly": "2026-10-09",
+      "weekly": "2026-10-22",
       "monthly": "2026-10-20",
       "quarterly": "2026-08-31"
     },
     "stale": {
-      "weekly": true,
+      "weekly": false,
       "monthly": false,
       "quarterly": false
     }
@@ -21,25 +21,25 @@ const INSIGHTS = {
   "weekly": {
     "zh": [
       {
-        "tag": "risk",
-        "title": "酒店 RevPAR 同比下降 10.5%",
-        "body": "9/27–10/3 酒店 RevPAR 同比 <span class=\"num-highlight\">-10.5%</span>，入住率 <span class=\"num-highlight\">-4.1%</span>、ADR <span class=\"num-highlight\">-6.7%</span>，量价同时走弱。下一周重点看房价降幅能否收窄。",
+        "tag": "highlight",
+        "title": "酒店 RevPAR 同比转正 +0.4%",
+        "body": "10/11–10/17 酒店 RevPAR 同比 <span class=\"num-highlight\">+0.4%</span>，ADR <span class=\"num-highlight\">+1.3%</span>、入住率 <span class=\"num-highlight\">-0.9%</span>；价格转正、入住率仍微降，修复幅度仍小，后续看入住率能否止跌。",
         "refs": [
-          "weekly.hotelRevPAR@9/27-10/3",
-          "weekly.hotelOccupancy@9/27-10/3",
-          "weekly.hotelADR@9/27-10/3"
+          "weekly.hotelRevPAR@10/11-10/17",
+          "weekly.hotelADR@10/11-10/17",
+          "weekly.hotelOccupancy@10/11-10/17"
         ]
       }
     ],
     "en": [
       {
-        "tag": "risk",
-        "title": "Hotel RevPAR fell 10.5% year over year",
-        "body": "During September 27–October 3, hotel RevPAR fell <span class=\"num-highlight\">10.5% YoY</span>, as occupancy declined <span class=\"num-highlight\">4.1%</span> and ADR fell <span class=\"num-highlight\">6.7%</span>. Both volume and price weakened; watch whether the decline in room rates narrows the following week.",
+        "tag": "highlight",
+        "title": "Hotel RevPAR turned positive at +0.4% YoY",
+        "body": "During October 11–17, hotel RevPAR rose <span class=\"num-highlight\">0.4% YoY</span>, with ADR up <span class=\"num-highlight\">1.3%</span> and occupancy down <span class=\"num-highlight\">0.9%</span>. Prices turned positive while occupancy remained slightly lower; the recovery is still modest—watch whether occupancy stops declining.",
         "refs": [
-          "weekly.hotelRevPAR@9/27-10/3",
-          "weekly.hotelOccupancy@9/27-10/3",
-          "weekly.hotelADR@9/27-10/3"
+          "weekly.hotelRevPAR@10/11-10/17",
+          "weekly.hotelADR@10/11-10/17",
+          "weekly.hotelOccupancy@10/11-10/17"
         ]
       }
     ]
