@@ -2285,47 +2285,35 @@
         }
 
         function updateKPI() {
-            // The headline cards all describe the same latest reporting week.
-            // Keep a missing metric blank instead of silently using an older week.
-            const latestIndex = DATA.weekly.weeks.length - 1;
-            const weekLabel = latestIndex >= 0 ? DATA.weekly.weeks[latestIndex] : '';
-            const sublabel = weekLabel ? weekLabel + ' ' + t('weekYoY') : '';
-            // Reference-only display for the 9/27–10/3 aviation gap. The canonical
-            // week remains null. Values are from the last complete QTD aviation row
-            // (8/30–9/5, 国内行业数据 B195/G195:I195), never a 9/27–10/3 estimate.
-            const reference = weekLabel === '9/27-10/3'
-                ? { pax: 0.05, ticket: 0.03, flight: 0.01 }
-                : {};
-            const referenceWeek = currentLang === 'zh'
-                ? '参考周同比 8/30–9/5（非当周）'
-                : 'Reference week YoY 8/30–9/5 (not current week)';
+            // Hotel and aviation sources can end on different weeks. Show each metric's
+            // own latest non-null observation instead of blanking lagging series.
             const metrics = [
-                ['occ', DATA.weekly.hotelOccupancy],
-                ['adr', DATA.weekly.hotelADR],
-                ['revpar', DATA.weekly.hotelRevPAR],
-                ['pax', DATA.weekly.aviationPax],
-                ['ticket', DATA.weekly.aviationTicket],
-                ['flight', DATA.weekly.aviationFlight],
+                ['occ', DATA.weekly.hotelOccupancy, 'hotel'],
+                ['adr', DATA.weekly.hotelADR, 'hotel'],
+                ['revpar', DATA.weekly.hotelRevPAR, 'hotel'],
+                ['pax', DATA.weekly.aviationPax, 'aviation'],
+                ['ticket', DATA.weekly.aviationTicket, 'aviation'],
+                ['flight', DATA.weekly.aviationFlight, 'aviation'],
             ];
-            for (const [name, series] of metrics) {
-                const actual = latestIndex >= 0 ? series[latestIndex] : null;
-                const useReference = actual == null && Object.hasOwn(reference, name);
-                const value = useReference ? reference[name] : actual;
+            let latestHotelWeek = '';
+            let latestAviationWeek = '';
+            for (const [name, series, sector] of metrics) {
+                const hit = lastNonNull(series);
+                const weekLabel = hit.index >= 0 ? DATA.weekly.weeks[hit.index] : '';
                 const node = document.getElementById('kpi-' + name);
-                node.textContent = fmtPct(value);
-                node.className = 'kpi-value ' + (value == null ? '' : (value >= 0 ? 'up' : 'down'));
+                node.textContent = fmtPct(hit.value);
+                node.className = 'kpi-value ' + (hit.value == null ? '' : (hit.value >= 0 ? 'up' : 'down'));
                 document.getElementById('kpi-' + name + '-week').textContent =
-                    useReference ? referenceWeek : sublabel;
-                if (['pax', 'ticket', 'flight'].includes(name)) {
-                    const key = { pax: 'kpiPax', ticket: 'kpiTicket', flight: 'kpiFlight' }[name];
-                    document.getElementById('i18n-kpi-' + name).textContent = useReference
-                        ? t(key).replace(currentLang === 'zh' ? '（最新周）' : ' (latest week)',
-                            currentLang === 'zh' ? '（参考周）' : ' (reference week)')
-                        : t(key);
-                }
+                    weekLabel ? weekLabel + ' ' + t('weekYoY') : '';
+                if (sector === 'hotel' && weekLabel) latestHotelWeek = weekLabel;
+                if (sector === 'aviation' && weekLabel) latestAviationWeek = weekLabel;
             }
-            setOverviewTitle('i18n-chart-weekly-overview',
-                weekLabel || (currentLang === 'zh' ? '最新周' : 'Latest week'));
+            const scope = latestHotelWeek && latestAviationWeek && latestHotelWeek !== latestAviationWeek
+                ? (currentLang === 'zh'
+                    ? '酒店 ' + latestHotelWeek + ' · 航空 ' + latestAviationWeek
+                    : 'Hotels ' + latestHotelWeek + ' · Aviation ' + latestAviationWeek)
+                : (latestAviationWeek || latestHotelWeek || (currentLang === 'zh' ? '最新周' : 'Latest week'));
+            setOverviewTitle('i18n-chart-weekly-overview', scope);
         }
 
         function updateMonthlyKPI() {

@@ -13,7 +13,7 @@ const INSIGHTS = {
       "quarterly": "2026-08-31"
     },
     "stale": {
-      "weekly": false,
+      "weekly": true,
       "monthly": false,
       "quarterly": false
     }
