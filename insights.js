@@ -14,7 +14,7 @@ const INSIGHTS = {
     },
     "stale": {
       "weekly": true,
-      "monthly": false,
+      "monthly": true,
       "quarterly": false
     }
   },
